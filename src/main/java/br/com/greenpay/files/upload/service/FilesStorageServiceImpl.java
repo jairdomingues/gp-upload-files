@@ -139,7 +139,7 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 
 	private String callProduct(Long productId, String urlPhoto) {
 //		final String uri = "http://localhost:8080/products/image";
-		final String uri = "http://localhost:8080/products/image";
+		final String uri = "https://green-pay-v1.uc.r.appspot.com//products/image";
 		UpdatePhotoResponse updatePhotoResponse = new UpdatePhotoResponse();
 		updatePhotoResponse.setProductId(productId);
 		updatePhotoResponse.setUrlPhoto(urlPhoto);
