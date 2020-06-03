@@ -2,6 +2,7 @@ package br.com.greenpay.files.upload.service;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -97,10 +98,18 @@ public class FilesStorageServiceImpl implements FilesStorageService {
 	}
 
 	private void firestore(MultipartFile file, Long productId) throws IOException {
+		
+		InputStream is = null;
+		try {
+			is = getClass().getResourceAsStream("/green-pay-v1-63f74ec603a0.json");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 
 		StorageOptions storageOptions = StorageOptions.newBuilder().setProjectId("green-pay-v1 ")
 				.setCredentials(GoogleCredentials
-						.fromStream(new FileInputStream("/home/jair/eclipse-workspace/green-pay-v1-63f74ec603a0.json")))
+						.fromStream(is))
 				.build();
 		Storage storage = storageOptions.getService();
 
